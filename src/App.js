@@ -11,6 +11,11 @@ function useTodoContext() {
   return useContext(TodoContext);
 }
 
+function useCustomTodo() {
+  const { todo, setTodo } = useTodoContext();
+  return { todo, setTodo };
+}
+
 function ShowTodo() {
   const { todo } = useTodoContext();
   return (
@@ -21,7 +26,7 @@ function ShowTodo() {
 }
 
 function InputTodo() {
-  const { todo, setTodo } = useTodoContext();
+  const { todo, setTodo } = useCustomTodo();
   const onChange = e => setTodo(e.target.value);
   return (
     <section>
