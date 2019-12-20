@@ -11,12 +11,20 @@ function useTodoContext() {
   return useContext(TodoContext);
 }
 
-function Todo() {
+function ShowTodo() {
+  const { todo } = useTodoContext();
+  return (
+    <section>
+      <h1>{todo}</h1>
+    </section>
+  );
+}
+
+function InputTodo() {
   const { todo, setTodo } = useTodoContext();
   const onChange = e => setTodo(e.target.value);
   return (
     <section>
-      <h1>{todo}</h1>
       <input value={todo} onChange={onChange} />
     </section>
   );
@@ -25,7 +33,8 @@ function Todo() {
 function App() {
   return (
     <TodoProvider>
-      <Todo />
+      <ShowTodo />
+      <InputTodo />
     </TodoProvider>
   );
 }
