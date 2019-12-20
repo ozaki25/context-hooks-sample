@@ -6,8 +6,12 @@ function TodoProvider(props) {
   return <TodoContext.Provider value={{ hello: '!!!!!!!' }} {...props} />;
 }
 
+function useTodoContext() {
+  return useContext(TodoContext);
+}
+
 function Hello() {
-  const { hello } = useContext(TodoContext);
+  const { hello } = useTodoContext();
   return <h1>{hello}</h1>;
 }
 
